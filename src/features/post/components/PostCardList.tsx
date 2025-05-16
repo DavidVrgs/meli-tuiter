@@ -5,15 +5,22 @@ import { Grid } from "@mui/material";
 
 export interface PostCardListProp {
   posts: Post[];
+  loading?: boolean;
   refetch?: () => void;
 }
 
-export function PostCardList({ posts, refetch }: Readonly<PostCardListProp>) {
+export function PostCardList({
+  posts,
+  loading,
+  refetch,
+}: Readonly<PostCardListProp>) {
   const {
     isFavoriteUser,
     onFollowUserClick,
     hiddeFavoriteUserAction,
     onFavoriteClick,
+    loadingAddFavorite,
+    loadingRemoveFavorite,
   } = useFavoriteUsers({ refetch });
   return (
     <Grid
@@ -32,6 +39,9 @@ export function PostCardList({ posts, refetch }: Readonly<PostCardListProp>) {
           onFollowUserClick={onFollowUserClick}
           isFavoriteUser={isFavoriteUser(post)}
           hiddeFavoriteUserAction={hiddeFavoriteUserAction(post)}
+          loadingFavoriteClick={
+            loadingAddFavorite || loadingRemoveFavorite || loading
+          }
         />
       ))}
     </Grid>

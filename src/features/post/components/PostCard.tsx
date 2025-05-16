@@ -15,6 +15,7 @@ export interface PostCardProps {
   hiddeFavoriteUserAction?: boolean;
   hiddenComment?: boolean;
   isPaper?: boolean;
+  loadingFavoriteClick?: boolean;
   onFavoriteClick: (post: Post) => void;
   onFollowUserClick: (user: FavoriteUser) => void;
 }
@@ -48,6 +49,7 @@ export function PostCard({
   hiddeFavoriteUserAction,
   hiddenComment,
   isPaper = true,
+  loadingFavoriteClick,
   onFollowUserClick,
   onFavoriteClick,
 }: Readonly<PostCardProps>): JSX.Element {
@@ -64,6 +66,7 @@ export function PostCard({
           aria-label="favoriteClick"
           size="small"
           color={post.liked ? "error" : "default"}
+          disabled={loadingFavoriteClick}
           onClick={() => onFavoriteClick(post)}
         >
           <Favorite sx={{ marginRight: "3px" }} />

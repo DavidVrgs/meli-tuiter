@@ -30,7 +30,11 @@ export default function usePostReplies() {
     setPost(foundPost);
   }, [postId]);
 
-  const { data: replies, refetch } = useQuery({
+  const {
+    data: replies,
+    refetch,
+    isPending: loadingReplies,
+  } = useQuery({
     queryKey: ["getPostReplies"],
     queryFn: () => getPostReplies(Number(postId)),
   });
@@ -58,6 +62,7 @@ export default function usePostReplies() {
   return {
     handleCreateReply,
     refetch,
+    loadingReplies,
     creatingReply,
     post,
     replies: replies ?? [],

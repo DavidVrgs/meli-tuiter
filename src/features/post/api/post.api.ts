@@ -1,7 +1,8 @@
 import type { CreateReplyPayload, Post } from "../../../shared/interfaces/post";
 import { httpClient } from "../../../shared/lib/httpClient";
 
-export const getFeed = (): Promise<Post[]> => httpClient.get("/me/feed");
+export const getFeed = (page: number): Promise<Post[]> =>
+  httpClient.get(`/me/feed?page=${page}&only_parents=true`);
 export const addFavoritePost = (postId: number): Promise<void> =>
   httpClient.post(`/me/tuits/${postId}/likes`);
 export const removeFavoritePost = (postId: number): Promise<void> =>

@@ -26,18 +26,19 @@ export default function useFavorite({ refetch }: FavoriteProp) {
     setFavoriteUsers(secureParseJson(favoriteUsersItem) ?? []);
   }, []);
 
-  const { mutate: addFavorite } = useMutation({
+  const { mutate: addFavorite, isPending: loadingAddFavorite } = useMutation({
     mutationFn: addFavoritePost,
     options: {
       onSuccess: () => refetch?.(),
     },
   });
-  const { mutate: removeFavorite } = useMutation({
-    mutationFn: removeFavoritePost,
-    options: {
-      onSuccess: () => refetch?.(),
-    },
-  });
+  const { mutate: removeFavorite, isPending: loadingRemoveFavorite } =
+    useMutation({
+      mutationFn: removeFavoritePost,
+      options: {
+        onSuccess: () => refetch?.(),
+      },
+    });
 
   const onFavoriteClick = (post: Post) => {
     if (post.liked) removeFavorite(post.id);
@@ -91,6 +92,8 @@ export default function useFavorite({ refetch }: FavoriteProp) {
 
   return {
     favoriteUsers,
+    loadingAddFavorite,
+    loadingRemoveFavorite,
     onFavoriteClick,
     hiddeFavoriteUserAction,
     isFavoriteUser,

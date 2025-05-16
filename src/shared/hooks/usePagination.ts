@@ -1,8 +1,8 @@
 import { useCallback, useMemo, useState } from "react";
 
 export const usePagination = <TData>(
-  data: TData[],
-  { initialPage = 1, rowsPerPage = 10 }
+  { initialPage = 1, rowsPerPage = 20 },
+  data?: TData[]
 ) => {
   const [page, setPage] = useState<number>(initialPage);
 
@@ -14,7 +14,7 @@ export const usePagination = <TData>(
   const paginatedData = useMemo(() => {
     const start = (page - 1) * rowsPerPage;
     const end = start + rowsPerPage;
-    return data.slice(start, end);
+    return data?.slice(start, end);
   }, [data, page, rowsPerPage]);
 
   return {

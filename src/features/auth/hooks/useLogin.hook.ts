@@ -8,7 +8,7 @@ import { isValidEmail } from "../../../shared/utils/validations";
 
 export default function useLogin() {
   const { login, loading, isAuthenticated } = useAuth();
-  const { t: translate } = useTranslation("login");
+  const { t: translate } = useTranslation("auth.login");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 

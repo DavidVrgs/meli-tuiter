@@ -10,19 +10,27 @@ import { usePagination } from "../../../shared/hooks/usePagination";
 
 export default function PostReplies(): JSX.Element {
   const { t: translate } = useTranslation("post.replies");
-  const { post, creatingReply, replies, handleCreateReply, refetch } =
-    usePostReplies();
+  const {
+    post,
+    creatingReply,
+    replies,
+    loadingReplies,
+    handleCreateReply,
+    refetch,
+  } = usePostReplies();
   const { handlePage, page, paginatedData, rowsPerPage } = usePagination(
-    replies ?? [],
     {
       rowsPerPage: 3,
-    }
+    },
+    replies ?? []
   );
   const {
     isFavoriteUser,
     onFollowUserClick,
     hiddeFavoriteUserAction,
     onFavoriteClick,
+    loadingAddFavorite,
+    loadingRemoveFavorite,
   } = useFavorite({ refetch });
 
   if (!post) return <NotFound />;
@@ -37,47 +45,54 @@ export default function PostReplies(): JSX.Element {
           onFollowUserClick={onFollowUserClick}
           isFavoriteUser={isFavoriteUser(post)}
           hiddeFavoriteUserAction={hiddeFavoriteUserAction(post)}
+          loadingFavoriteClick={
+            loadingAddFavorite || loadingRemoveFavorite || loadingReplies
+          }
         />
         <ReplyPostForm
           createReply={handleCreateReply}
           loading={creatingReply}
         />
 
-        <PaperCard>
-          <Grid container spacing={2} direction="column">
-            {paginatedData?.map((reply, index) => (
-              <>
-                <PostCard
-                  key={`card-reply-${post.id}`}
-                  post={reply}
-                  onFavoriteClick={onFavoriteClick}
-                  onFollowUserClick={onFollowUserClick}
-                  isFavoriteUser={isFavoriteUser(post)}
-                  hiddeFavoriteUserAction={true}
-                  hiddenComment={true}
-                  isPaper={false}
-                />
-                {index <
-                  (paginatedData.length > rowsPerPage
-                    ? rowsPerPage
-                    : paginatedData.length) -
-                    1 && <Divider />}
-              </>
-            ))}
-          </Grid>
-        </PaperCard>
+        {!!replies.length && (
+          <PaperCard>
+            <Grid container spacing={2} direction="column">
+              {paginatedData?.map((reply, index) => (
+                <>
+                  <PostCard
+                    key={`card-reply-${post.id}`}
+                    post={reply}
+                    onFavoriteClick={onFavoriteClick}
+                    onFollowUserClick={onFollowUserClick}
+                    isFavoriteUser={isFavoriteUser(post)}
+                    hiddeFavoriteUserAction={true}
+                    hiddenComment={true}
+                    isPaper={false}
+                  />
+                  {index <
+                    (paginatedData.length > rowsPerPage
+                      ? rowsPerPage
+                      : paginatedData.length) -
+                      1 && <Divider />}
+                </>
+              ))}
+            </Grid>
+          </PaperCard>
+        )}
       </Grid>
 
-      <Box marginY={3}>
-        <Pagination
-          variant="outlined"
-          count={
-            replies.length > rowsPerPage ? replies.length / rowsPerPage : 1
-          }
-          page={page}
-          onChange={handlePage}
-        />
-      </Box>
+      {!!replies.length && (
+        <Box marginY={3}>
+          <Pagination
+            variant="outlined"
+            count={
+              replies.length > rowsPerPage ? replies.length / rowsPerPage : 1
+            }
+            page={page}
+            onChange={handlePage}
+          />
+        </Box>
+      )}
     </PageContainer>
   );
 }
