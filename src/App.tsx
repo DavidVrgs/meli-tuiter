@@ -16,7 +16,6 @@ import SignUpPage from "./features/auth/pages/SignUpPage";
 export type AppProps = {
   lang: LOCALE;
 };
-
 const queryClient = new QueryClient();
 function ErrorFallback({ error }: Readonly<{ error: Error }>) {
   return <div>Something went wrong: {error.message}</div>;
