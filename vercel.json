@@ -1,0 +1,12 @@
+{
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/feed",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+     { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
