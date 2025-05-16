@@ -10,7 +10,8 @@
  7. Internacionalización
  8. Pruebas unitarias
  9. Oportunidades de mejora.
-
+ 10. Ejecutar proyecto
+     
 ### 1. Arquitectura
 Para facilitar la escabilidad y el mantenimiento, el proyecto fue realizado siguiendo una arquitectura feature-based para la estructura del mismo. Esta arquitectura define que cada carpeta debe contener el código específico de esa función, manteniendo los elementos separados. De esta manera ayuda a mejorar la colaboración, legibilidad y la escabilidad.
 
@@ -88,6 +89,8 @@ La Aplicación permite manejar multiples idiomas (español e ingles de momento),
 
 Siguiendo la arquitectura `feature-based` definida cada traducción debe ser manejada en una archivo dentro de cada `feature`. 
 
+El idioma tomará el que está configurado por defecto en el navegador. 
+
 ![image](https://github.com/user-attachments/assets/aa06b611-e9ae-4e5a-9e2f-176aab3126c0)
 
 ### 8. Pruebas unitarias. 
@@ -105,5 +108,9 @@ Una de ellas es la paginacion. Actualmente, la paginación está implementada de
 Una mejor estrategia sería implementar la paginación del lado del servidor, utilizando parámetros como `limit`  y `offset` (o `page`  y `perPage`) en las solicitudes. Esto permitiría que el backend solo retorne los datos necesarios para la página actual, mejorando el rendimiento y la experiencia de usuario.
 
 La segunda oportunidad de mejoras que vi, es manejar codigos de errores customizados, por ejemplo, si el backend devuelve un error dentro del payload llegue una propiedad como `{ "ErrorCode": "INVALID_CREDENTIALS"}` de esta manera es posible ser mapeado en el frontend facilmente. 
+
+### 10. Ejecutar proyecto
+Para ejecutar el proyecto es necesario crear el archivo `.env` y agregar la variable: `VITE_API_URL=https://meli-tuiter-proxy.onrender.com/api`
+finalmente, ejecutar el proyecto con `yarn dev` 
 
 
