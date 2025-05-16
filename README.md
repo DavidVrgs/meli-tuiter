@@ -16,20 +16,21 @@ Para facilitar la escabilidad y el mantenimiento, el proyecto fue realizado sigu
 
 Este sería un ejemplo claro de como se vería:
 
-        /src
-         /features
-           /auth
-	         /api
-	         /components
-	         /hooks
-	         /pages
-           /posts
-           /users
+    /src
+      /features
+        /auth
+          /api
+          /components
+          /hooks
+          /pages
+        /posts
+        /users
       /shared
-         /components
-         /hooks
-         /utils
-         /services
+        /components
+        /hooks
+        /utils
+        /services
+
 
 ### 2. Seguridad
 Dado que el API usa un token, la idea era no exponerlo publicamente en el cliente. Teniendo esto en cuenta, creé un backend que funciona como Proxy, este almacena el token en una variable de entorno y cada petición recibida realiza la petición a la Api dada por MeLi y retorna su valor.
@@ -45,7 +46,7 @@ La primera de esta fue con el uso del endpoint `GET /api/v1/me/tuits/${tuid_id}`
 ![image](https://github.com/user-attachments/assets/a8701298-a612-4d70-804f-d6e78f3fb29c)
 
 La segunda incidencia es con el endpoint que actualiza al usuario, especificamente al actualizar la contraseña de este. 
-`PUT /api/v1/me/profile`. Al actualizar la contraseña no se está encriptando, por ende, al realizar un login con esta nueva contraseña, el servidor busca desencriptarla (proceso normal) pero al no estar encriptda sino que es un texto normal, devuelve un error. Aprovechando que realicé el backend para hacer el Proxy, al recibir esta petición, encripto la contraseña y se la envío ya encriptada a la API de MeLi, garantizando así su funcionamiento. 
+`PUT /api/v1/me/profile`. Al actualizar la contraseña no se está encriptando, por ende, al realizar un login con esta nueva contraseña, el servidor busca desencriptarla (proceso normal) pero al no estar encriptada sino que es un texto normal, devuelve un error. Aprovechando que realicé el backend para hacer el Proxy, al recibir esta petición, encripto la contraseña y se la envío ya encriptada a la API de MeLi, garantizando así su funcionamiento. 
 
 ![image](https://github.com/user-attachments/assets/7c758d61-e940-4316-b2da-9264dfb0a509)
 
