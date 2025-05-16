@@ -103,7 +103,7 @@ Las pruebas unitarias se centraron en probar los componentes dentro de cada `fea
 Una oportunidad de mejora que noté es manejar codigos de errores customizados, por ejemplo, si el backend devuelve un error dentro del payload llegue una propiedad como `{ "ErrorCode": "INVALID_CREDENTIALS"}` de esta manera es posible ser mapeado en el frontend facilmente. 
 
 ### 10. Ejecutar proyecto
-Para ejecutar el proyecto es necesario crear el archivo `.env` y agregar la variable: `VITE_API_URL=https://meli-tuiter-proxy.onrender.com/api`
+Para ejecutar el proyecto es necesario crear el archivo `.env` y agregar la variable: `VITE_API_URL=https://meli-tuiter-proxy-production.up.railway.app/api`
 finalmente, ejecutar el proyecto con `yarn dev` 
 
 
