@@ -100,14 +100,7 @@ Las pruebas unitarias se centraron en probar los componentes dentro de cada `fea
 ![image](https://github.com/user-attachments/assets/5ffaabf9-a99b-4097-8fd9-a17ae1bc7440)
 
 ### 9. Oportunidades de mejora
-Existen dos oportunidades de mejora que observé mientras realizaba la aplicación. 
-
-Una de ellas es la paginacion. Actualmente, la paginación está implementada de manera local en el frontend, lo que implica que se cargan todos los datos desde el backend y luego se segmentan en páginas en el cliente. Si bien esta solución puede ser suficiente para conjuntos de datos pequeños, no es escalable ni eficiente cuando la cantidad de registros crece significativamente.
- 
- **Propuesta de mejora: paginación en el backend**  
-Una mejor estrategia sería implementar la paginación del lado del servidor, utilizando parámetros como `limit`  y `offset` (o `page`  y `perPage`) en las solicitudes. Esto permitiría que el backend solo retorne los datos necesarios para la página actual, mejorando el rendimiento y la experiencia de usuario.
-
-La segunda oportunidad de mejoras que vi, es manejar codigos de errores customizados, por ejemplo, si el backend devuelve un error dentro del payload llegue una propiedad como `{ "ErrorCode": "INVALID_CREDENTIALS"}` de esta manera es posible ser mapeado en el frontend facilmente. 
+Una oportunidad de mejora que noté es manejar codigos de errores customizados, por ejemplo, si el backend devuelve un error dentro del payload llegue una propiedad como `{ "ErrorCode": "INVALID_CREDENTIALS"}` de esta manera es posible ser mapeado en el frontend facilmente. 
 
 ### 10. Ejecutar proyecto
 Para ejecutar el proyecto es necesario crear el archivo `.env` y agregar la variable: `VITE_API_URL=https://meli-tuiter-proxy.onrender.com/api`
