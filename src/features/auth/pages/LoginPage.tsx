@@ -1,12 +1,12 @@
 import type { JSX } from "react";
 
 import { Grid, Typography } from "@mui/material";
-import styles from "./Login.styles";
-import { useTranslation } from "../../shared";
-import LoginForm from "./components/LoginForm";
+import styles from "../Auth.styles";
+import { useTranslation } from "../../../shared";
+import LoginForm from "../components/LoginForm";
 
 function LoginPage(): JSX.Element {
-  const { t: translate } = useTranslation("login");
+  const { t: translate } = useTranslation("auth.login");
   return (
     <Grid
       container

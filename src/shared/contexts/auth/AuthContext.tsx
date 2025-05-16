@@ -14,10 +14,9 @@ import {
   type SignUpPayload,
   type User,
 } from "../../interfaces/auth";
-import { userLogin } from "../../../features/login/api/login.api";
 import { getUserProfile } from "../../../features/profile/api/profile.api";
 import { ApiCode, type ApiError } from "../../interfaces/api";
-import { userSignUp } from "../../../features/signUp/api/signUp.api";
+import { userLogin, userSignUp } from "../../../features/auth/api/auth.api";
 
 type AuthContextType = {
   user: User | null;

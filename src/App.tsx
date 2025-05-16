@@ -1,8 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import type { LOCALE } from "./shared/contexts/i18n/i18n";
-import LoginPage from "./features/login/LoginPage";
-import SignUpPage from "./features/signUp/SignUpPage";
 import { ErrorBoundary } from "react-error-boundary";
 import { AppLoading, Navbar, NotFound } from "./shared/components";
 import FeedPage from "./features/post/pages/FeedPage";
@@ -12,6 +10,8 @@ import { ProfilePage } from "./features/profile/ProfilePage";
 import { FavoriteUserPage } from "./features/favoriteUsers/FavoriteUsersPage";
 import AppProvider from "./shared/providers/AppProvider";
 import { useAuth } from "./shared";
+import LoginPage from "./features/auth/pages/LoginPage";
+import SignUpPage from "./features/auth/pages/SignUpPage";
 
 export type AppProps = {
   lang: LOCALE;

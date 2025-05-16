@@ -12,6 +12,13 @@ const styles = {
   button: {
     width: "100%",
   },
+  no_account: {
+    gap: "5px",
+  },
+  signup: {
+    color: colors.primary.main,
+    cursor: "pointer",
+  },
   already_account: {
     gap: "5px",
   },

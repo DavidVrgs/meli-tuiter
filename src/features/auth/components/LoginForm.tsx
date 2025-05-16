@@ -5,11 +5,11 @@ import { useTranslation } from "../../../shared";
 import type { LoginPayload } from "../../../shared/interfaces/auth";
 import { TextInput } from "../../../shared/components";
 import useLogin from "../hooks/useLogin.hook";
-import styles from "../Login.styles";
+import styles from "../Auth.styles";
 import { Form } from "react-final-form";
 
 function LoginForm(): JSX.Element {
-  const { t: translate } = useTranslation("login");
+  const { t: translate } = useTranslation("auth.login");
   const { error, loading, onSubmit, onValidation } = useLogin();
   return (
     <Paper style={styles.paper}>

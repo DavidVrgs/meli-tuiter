@@ -1,11 +1,11 @@
 import type { JSX } from "react";
 import { Grid, Typography } from "@mui/material";
-import { useTranslation } from "../../shared";
-import styles from "./SignUp.styles";
-import SignUpForm from "./components/SignUpForm";
+import { useTranslation } from "../../../shared";
+import styles from "../Auth.styles";
+import SignUpForm from "../components/SignUpForm";
 
 function SignUpPage(): JSX.Element {
-  const { t: translate } = useTranslation("signup");
+  const { t: translate } = useTranslation("auth.signup");
 
   return (
     <Grid

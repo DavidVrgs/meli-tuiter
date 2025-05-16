@@ -1,6 +1,5 @@
 import type { PolyglotOptions } from "node-polyglot";
-import { translationsLogin } from "../../../features/login/Login.translation";
-import { translationsSignUp } from "../../../features/signUp/SignUp.translation";
+import { translationsAuth } from "../../../features/auth/Auth.translation";
 import { translationsNavBar } from "../../components/Navbar/Navbar.translation";
 import { translationsPost } from "../../../features/post/Post.translation";
 import { translationsProfile } from "../../../features/profile/Profile.translation";
@@ -30,8 +29,7 @@ const polyglot: PolyglotOptions = {
   phrases: {
     es: {
       ...common.es,
-      login: translationsLogin.es,
-      signup: translationsSignUp.es,
+      auth: translationsAuth.es,
       navbar: translationsNavBar.es,
       post: translationsPost.es,
       profile: translationsProfile.es,
@@ -39,8 +37,7 @@ const polyglot: PolyglotOptions = {
     },
     en: {
       ...common.en,
-      login: translationsLogin.en,
-      signup: translationsSignUp.en,
+      auth: translationsAuth.en,
       navbar: translationsNavBar.en,
       post: translationsPost.en,
       profile: translationsProfile.en,
